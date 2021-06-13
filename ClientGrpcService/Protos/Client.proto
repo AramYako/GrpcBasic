@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option csharp_namespace = "ClientGrpcService.Protos";
+
+
+service ClientProtoService {
+	rpc GetClient(GetClientRequest) returns (ClientModel);
+	rpc CreateClient (CreateClientRequest) returns (ClientModel);
+	rpc DeleteClient (DeleteClientRequest) returns (ClientDeleteResponse);
+}
+
+
+message GetClientRequest {
+	int32 clientId = 1;
+}
+
+message DeleteClientRequest {
+	int32 clientId = 1;
+}
+
+message ClientDeleteResponse {
+	bool succes = 1; 
+	int32 deletedCount = 2; 
+}
+
+message ClientModel{
+	int32 clientId = 1; 
+	string clientName = 2; 
+	string clientSecret = 3; 
+}
+
+message CreateClientRequest{
+	string clientName = 1; 
+	string clientSecret = 2; 
+}

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option csharp_namespace = "DocumentGrpcService.Protos";
+
+
+service DocumentProtoService {
+
+  rpc GetDocuments (GetAllDocumentsRequest) returns (DocumentModels);
+  rpc GetDocumentsStream (GetAllDocumentsRequest) returns (stream DocumentModel);
+  rpc CreateDocumentStream (stream CreateDocumentModelRequest) returns (CreateDocumentResponse);
+}
+
+
+message GetAllDocumentsRequest {
+	int32 clientId =1; 
+}
+
+// The request message containing the user's name.
+message DocumentModel {
+
+  int32 documentId = 1;
+  string name = 2; 
+  string documentType = 3;
+  int32 clientId =4; 
+}
+
+message CreateDocumentModelRequest {
+  string name = 1; 
+  string documentType = 2;
+  int32 clientId =3; 
+}
+
+message DocumentModels {
+	repeated  DocumentModel DocumentModel = 1; 
+}
+
+message CreateDocumentResponse {
+  bool success = 1; 
+  int32 insertCount=2; 
+}

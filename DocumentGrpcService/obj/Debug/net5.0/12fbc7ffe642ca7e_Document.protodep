@@ -1,0 +1,2 @@
+obj\Debug\net5.0\Protos/Document.cs \
+obj\Debug\net5.0\Protos/DocumentGrpc.cs: Protos/Document.proto
